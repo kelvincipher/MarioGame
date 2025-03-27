@@ -31,6 +31,8 @@ private:
 
     int mWidth = 0;
     int mHeight = 0;
+    int x;
+    int y;
 };
 
 #endif // TEXTURE_H

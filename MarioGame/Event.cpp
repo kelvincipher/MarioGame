@@ -8,16 +8,16 @@ void Event::PollEvent(Keyboard* keyboard)
 {
 	this->keyboard = keyboard;
 	SDL_Event e;
-	// System event
 	if (SDL_PollEvent(&e))
 	{
+		// System event
 		if (e.type == SDL_QUIT) event = EVENT_OUT;
-	}
 
-	// Keyboard event
-	if (keyboard) {
-		if (e.type == SDL_KEYDOWN && e.key.repeat == 0)  { keyboard->setKey(e.key.keysym.scancode); }
-		if (e.type == SDL_KEYUP && e.key.repeat == 0)	{ keyboard->resetKey(e.key.keysym.scancode); }
+		// Keyboard event
+		if (keyboard) {
+			if (e.type == SDL_KEYDOWN) { keyboard->setKey(e.key.keysym.scancode); }
+			if (e.type == SDL_KEYUP) { keyboard->resetKey(e.key.keysym.scancode); }
+		}
 	}
 }
 

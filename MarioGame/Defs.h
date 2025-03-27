@@ -26,6 +26,7 @@
 #define IMG_COIN			"gfx/coin.png"
 #define IMG_GROUND			"gfx/ground.png"
 #define IMG_MARIO			"gfx/mario1985.png"
+#define IMG_BACKGROUND		"gfx/background.png"
 
 // Text size
 #define TEXT_SIZE_BIG 30
@@ -38,9 +39,20 @@
 #define KEY_RIGHT	SDL_SCANCODE_RIGHT
 #define KEY_UP		SDL_SCANCODE_UP
 #define KEY_SPACE	SDL_SCANCODE_SPACE
-#define KEY_A		SDL_SCANCODE_W
-#define KEY_W		SDL_SCANCODE_S
+#define KEY_A		SDL_SCANCODE_A
+#define KEY_W		SDL_SCANCODE_W
 #define KEY_D		SDL_SCANCODE_D
 #define KEY_ENTER	SDL_SCANCODE_RETURN
+
+// Mario physics constants
+const double DFLT_SPEEDX = 15, DFLT_SPEEDY = -32;
+const double GRAVITY = 2.7; 
+const double GROUND = 613;
+const double IDLE_X = 0.0;
+
+// Coin physics constants
+const double FALL_ACCEL = 0.5;
+// Nunber of coins
+const int NUM_COINS = 5;
 
 #endif //DEFS_H

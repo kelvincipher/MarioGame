@@ -1,8 +1,10 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-#define EVENT_OUT true
-#define EVENT_IN  false
+#define EVENT_OUT false
+
+#define EVENT_IN  true
+
 
 #include <SDL.h>
 #include "Keyboard.h"
@@ -11,7 +13,7 @@
 class Event
 {
 private:
-	bool event;
+	bool event = 0;
 	Keyboard* keyboard;
 
 public:
