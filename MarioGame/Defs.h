@@ -12,7 +12,7 @@
 
 // Font
 #define FONT_PATH			"font/8bit.ttf"
-#define FONT_SCORE_SIZE		50
+#define FONT_SCORE_SIZE		35
 #define FONT_GAMEOVER_SIZE	100
 
 // Music
@@ -26,10 +26,6 @@
 #define IMG_GROUND			"gfx/ground.png"
 #define IMG_MARIO			"gfx/mario1985.png"
 #define IMG_BACKGROUND		"gfx/background.png"
-
-// Text size
-#define TEXT_SIZE_BIG 30
-#define TEXT_SIZE_SMALL 16
 
 // For keyboard handling
 #define KEY_MAX		100
