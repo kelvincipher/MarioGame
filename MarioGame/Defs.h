@@ -1,5 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
+#include <SDL.h>
+
 // Screen dimensions
 #define SCREEN_WIDTH 1280;
 #define SCREEN_HEIGHT 720;
@@ -8,13 +10,10 @@
 #define WINDOW_TITLE		"Mario Coin";
 #define WINDOW_ICON_PATH	"gfx/coin_icon.png"
 
-// Background
-#define BACKGROUND_INTRO	"..."
-#define BACKGROUND_LEVEL	"..."
-#define BACKGROUND_GAMEOVER "..."
-
 // Font
 #define FONT_PATH			"font/8bit.ttf"
+#define FONT_SCORE_SIZE		50
+#define FONT_GAMEOVER_SIZE	100
 
 // Music
 #define MUSIC_THEME_PATH	"sfx/bgtheme.mp3"
@@ -50,9 +49,28 @@ const double GRAVITY = 2.7;
 const double GROUND = 613;
 const double IDLE_X = 0.0;
 
+// Mario's status
+enum marioStatus
+{
+	JUMP,
+	RUN,
+	IDLE
+};
+
+// Mario's health
+const unsigned int MAX_HEALTH = 100;
+const int HEALTH_DECREASE_INTERVAL = 1000; // Decrease health every 1 second
+const int HEALTH_DECREASE_AMOUNT = 2;   // Decrease health by 2
+
 // Coin physics constants
-const double FALL_ACCEL = 0.5;
+const double ACCEL_RATE = 1.5;
 // Nunber of coins
 const int NUM_COINS = 5;
+
+// Mario's and coin's dimension
+#define MARIO_WIDTH		52
+#define MARIO_HEIGHT	96
+#define COIN_WIDTH		32
+#define COIN_HEIGHT		40
 
 #endif //DEFS_H

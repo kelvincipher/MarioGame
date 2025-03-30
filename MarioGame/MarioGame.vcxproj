@@ -132,24 +132,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mainwindow.cpp" />
+    <ClCompile Include="Mario.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Background.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="Defs.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Mainwindow.h" />
+    <ClInclude Include="Mario.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Utility.h" />
