@@ -1,6 +1,6 @@
-#include "Game.h"
+﻿#include "Game.h"
 
-Game::Game() : score(0), hiScore(0), isGameOver(false)
+Game::Game() : score(0), hiScore(0), isGameOver(false), gameOverSoundPlayed(false)
 {
 	initialize();
 }
@@ -30,6 +30,12 @@ void Game::initialize()
 	hiScoreText = new Texture(window->getRenderer());
 	scoreText->loadFromRenderedText(convertIntToString(score), *scoreFont, { 255, 255, 255, 255 }); // White color
 	hiScoreText->loadFromRenderedText(convertIntToString(hiScore), *scoreFont, { 255, 255, 0 }); // Yellow color
+
+	instructionFont = new Font(FONT_PATH, FONT_INSTRUCTION_SIZE);
+	instructionFont->loadFromFile(FONT_PATH, FONT_INSTRUCTION_SIZE);
+	instructionText = new Texture(window->getRenderer());
+	instructionText->loadFromRenderedText("Press A, D, <-, -> to move. Press Space, W to jump. Press Enter to restart. Press Esc to quit", *instructionFont, { 255, 255, 255, 255 }); // White color
+
 
     this->keyboard = new Keyboard();
     this->event = new Event();
@@ -97,7 +103,7 @@ void Game::update()
 	//if the player's health is 0, the game is over
 	if (mario->getHealth() == 0)
 	{
-		gameOver();
+		isGameOver = true;
 	}
 }
 
@@ -111,6 +117,7 @@ void Game::render()
     scoreText->render(SCREEN_WIDTH / 2, 0);
 	hiScoreText->render(0, 0);
     ground->render(0, GROUND);
+	instructionText->render(0, 640);
     for (int i = 0; i < NUM_COINS; i++)
     {
         coins[i]->render();
@@ -138,8 +145,13 @@ void Game::run()
 
 void Game::gameOver()
 {
-	bgTheme->stop();
-	lostSound->play();
+	// Avoid playing the game over sound multiple times
+	if (!gameOverSoundPlayed)
+	{
+		bgTheme->stop();
+        lostSound->play();
+		gameOverSoundPlayed = true;
+	}
 	Font* gameOverFont = new Font(FONT_PATH, FONT_GAMEOVER_SIZE);
 	gameOverFont->loadFromFile(FONT_PATH, FONT_GAMEOVER_SIZE);
 	gameOverText = new Texture(window->getRenderer());
@@ -160,6 +172,7 @@ void Game::resetGame()
 		coins[i]->reset();
 	}
 	isGameOver = false;
+	gameOverSoundPlayed = false;
 }
 
 void Game::cleanup()
@@ -174,8 +187,10 @@ void Game::cleanup()
     delete scoreText;
 	delete hiScoreText;
     delete gameOverText;
+	delete instructionText;
     delete scoreFont;
 	delete gameOverFont;
+	delete instructionFont;
     for (int i = 0; i < NUM_COINS; i++)
     {
         delete coins[i];

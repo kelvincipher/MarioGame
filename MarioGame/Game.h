@@ -24,8 +24,10 @@ private:
 	Texture* scoreText;
 	Texture* hiScoreText;
 	Texture* gameOverText;
+	Texture* instructionText;
 	Font* scoreFont;
 	Font* gameOverFont;
+	Font* instructionFont;
 	Keyboard* keyboard;
 	Event* event;
 	Mario* mario;
@@ -36,6 +38,7 @@ private:
 	int score;
 	int hiScore;
 	bool isGameOver;
+	bool gameOverSoundPlayed;
 
 	void initialize();
 	void update();

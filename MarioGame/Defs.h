@@ -1,6 +1,5 @@
 #ifndef DEFS_H
 #define DEFS_H
-#include <SDL.h>
 
 // Screen dimensions
 #define SCREEN_WIDTH 1280;
@@ -14,12 +13,13 @@
 #define FONT_PATH			"font/8bit.ttf"
 #define FONT_SCORE_SIZE		35
 #define FONT_GAMEOVER_SIZE	100
+#define FONT_INSTRUCTION_SIZE 10
 
 // Music
 #define MUSIC_THEME_PATH	"sfx/bgtheme.mp3"
 #define SOUND_JUMP			"sfx/jump.wav"
 #define SOUND_COIN			"sfx/coin.wav"
-#define SOUND_LOST			"sfx/lost.mp3"
+#define SOUND_LOST			"sfx/lost.wav"
 
 // Image
 #define IMG_COIN			"gfx/coin.png"
@@ -55,7 +55,7 @@ enum marioStatus
 
 // Mario's health
 const unsigned int MAX_HEALTH = 100;
-const int HEALTH_DECREASE_INTERVAL = 1000; // Decrease health every 1 second
+const int HEALTH_DECREASE_INTERVAL = 100; // Decrease health every 1 second
 const int HEALTH_DECREASE_AMOUNT = 2;   // Decrease health by 2
 
 // Coin physics constants
