@@ -55,7 +55,7 @@ enum marioStatus
 
 // Mario's health
 const unsigned int MAX_HEALTH = 100;
-const int HEALTH_DECREASE_INTERVAL = 100; // Decrease health every 1 second
+const int HEALTH_DECREASE_INTERVAL = 1000; // Decrease health every 1 second
 const int HEALTH_DECREASE_AMOUNT = 2;   // Decrease health by 2
 
 // Coin physics constants
