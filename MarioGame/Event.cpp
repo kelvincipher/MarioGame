@@ -11,7 +11,8 @@ void Event::PollEvent(Keyboard* keyboard)
 	if (SDL_PollEvent(&e))
 	{
 		// System event
-		if (e.type == SDL_QUIT) event = EVENT_OUT;
+		if (e.type == SDL_QUIT) event = EVENT_IN;
+		else event = EVENT_OUT;
 
 		// Keyboard event
 		if (keyboard) {
@@ -21,6 +22,4 @@ void Event::PollEvent(Keyboard* keyboard)
 	}
 }
 
-bool Event::getEvent(bool event) { return event; }
-void Event::setEvent(bool _event) { event = _event; }
-void Event::resetEvent(bool event) { event = EVENT_IN; }
+bool Event::getEvent() const { return event; }

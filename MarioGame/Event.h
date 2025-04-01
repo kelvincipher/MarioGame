@@ -2,7 +2,6 @@
 #define EVENT_H
 
 #define EVENT_OUT false
-
 #define EVENT_IN  true
 
 
@@ -20,9 +19,7 @@ public:
 	Event();
 	~Event();
 	void PollEvent(Keyboard*);
-	bool getEvent(bool);
-	void setEvent(bool);
-	void resetEvent(bool);
+	bool getEvent() const;
 };
 
 #endif //EVENT_H

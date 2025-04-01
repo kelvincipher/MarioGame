@@ -34,7 +34,8 @@ void Game::initialize()
 	instructionFont = new Font(FONT_PATH, FONT_INSTRUCTION_SIZE);
 	instructionFont->loadFromFile(FONT_PATH, FONT_INSTRUCTION_SIZE);
 	instructionText = new Texture(window->getRenderer());
-	instructionText->loadFromRenderedText("Press A, D, <-, -> to move. Press Space, W to jump. Press Enter to restart. Press Esc to quit", *instructionFont, { 255, 255, 255, 255 }); // White color
+	instructionText->loadFromRenderedText("Press A, D, <-, -> to move. Press Space, W to jump. Press Enter to restart. Press Esc or Close the window to quit.", 
+        *instructionFont, { 255, 255, 255, 255 }); // White color
 
 
     this->keyboard = new Keyboard();
@@ -135,7 +136,7 @@ void Game::render()
 
 void Game::run()
 {
-    while (!(keyboard->getKey(KEY_ESC) || event->getEvent(EVENT_OUT)))
+    while (!(keyboard->getKey(KEY_ESC) || event->getEvent()))
     {
         update();
         render();
