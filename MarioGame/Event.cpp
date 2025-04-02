@@ -11,8 +11,8 @@ void Event::PollEvent(Keyboard* keyboard)
 	if (SDL_PollEvent(&e))
 	{
 		// System event
-		if (e.type == SDL_QUIT) event = EVENT_IN;
-		else event = EVENT_OUT;
+		if (e.type == SDL_QUIT) event = EVENT_OUT;
+		else event = EVENT_IN;
 
 		// Keyboard event
 		if (keyboard) {

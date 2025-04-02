@@ -3,6 +3,7 @@
 
 #define SCREEN_WIDTH 1280
 
+// Constructor
 Mario::Mario(SDL_Renderer* renderer) : 
     marioHealth(MAX_HEALTH),
 	healthBarRect({ 0, 75, MAX_HEALTH * 2, 25 }),
@@ -18,12 +19,14 @@ Mario::Mario(SDL_Renderer* renderer) :
 	marioPos.y = GROUND - MARIO_HEIGHT;
 }
 
+// Deconstructor
 Mario::~Mario()
 {
 	delete marioTex;
 	delete jumpSound;
 }
 
+// Check player's move
 void Mario::handleInput(Keyboard* keyboard)
 {
     if (marioState != JUMP) // If not jump (move right or left)
@@ -52,6 +55,7 @@ void Mario::handleInput(Keyboard* keyboard)
     }
 }
 
+// Move the Mario
 void Mario::move(Keyboard* keyboard)
 {
     handleInput(keyboard);
@@ -83,6 +87,7 @@ void Mario::move(Keyboard* keyboard)
     }
 }
 
+// Get the rectangle of Mario (To check collision with coins)
 SDL_Rect Mario::getRect() const
 {
     SDL_Rect marioRect;
@@ -93,17 +98,20 @@ SDL_Rect Mario::getRect() const
     return marioRect;
 }
 
+// Check collision between Mario and coins
 bool Mario::checkMarioCollision(SDL_Rect& coinRect)
 {
     SDL_Rect marioRect = getRect();
     return checkCollision(marioRect, coinRect);
 }
 
+// Render Mario at (x, y) (face left if moving left, face right if moving right)
 void Mario::render()
 {
     marioTex->render(marioPos.x, marioPos.y, nullptr, 0.0, nullptr, (marioSpeed.x < 0) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }
 
+// Mario health decrease over time (~A timer)
 void Mario::healthDecrease()
 {
 	Uint32 currentTime = SDL_GetTicks();
@@ -118,6 +126,7 @@ void Mario::healthDecrease()
 	}
 }
 
+// Render Mario's health bar
 void Mario::renderHealthBar(SDL_Renderer* renderer)
 {
 	// Render health bar
@@ -129,11 +138,13 @@ void Mario::renderHealthBar(SDL_Renderer* renderer)
 	SDL_RenderFillRect(renderer, &healthBarRect);
 }
 
-unsigned int Mario::getHealth() const
+// Get Mario's current health
+int Mario::getHealth() const
 {
 	return marioHealth;
 }
 
+// Reset Mario's position, health, speed and state when the game ends
 void Mario::resetMario()
 {
 	marioHealth = MAX_HEALTH;

@@ -32,7 +32,7 @@ public:
 	SDL_Rect getRect() const;
 	bool checkMarioCollision(SDL_Rect& otherRect);
 	void renderHealthBar(SDL_Renderer* renderer);
-	unsigned int getHealth() const;
+	int getHealth() const;
 	void resetMario(); // When the game is over
 };
 

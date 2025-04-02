@@ -1,22 +1,25 @@
 #include "Font.h"
 #include "Exception.h"
 
+// Constructor
 Font::Font()
     : gFont{ nullptr } {
 }
 
+// Constructor with path and size
 Font::Font(const std::string& path, int size)
     : Font()
 {
     loadFromFile(path, size);
 }
 
-
+// Deconstructor
 Font::~Font()
 {
     free();
 }
 
+// Load font from file
 void Font::loadFromFile(const std::string& path, int size)
 {
     free();
@@ -27,6 +30,7 @@ void Font::loadFromFile(const std::string& path, int size)
     }
 }
 
+// Free the font
 void Font::free()
 {
     if (gFont != nullptr) {

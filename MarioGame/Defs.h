@@ -56,12 +56,12 @@ enum marioStatus
 // Mario's health
 const unsigned int MAX_HEALTH = 100;
 const int HEALTH_DECREASE_INTERVAL = 1000; // Decrease health every 1 second
-const int HEALTH_DECREASE_AMOUNT = 2;   // Decrease health by 2
+const int HEALTH_DECREASE_AMOUNT = 4;   // Decrease health by 2
 
 // Coin physics constants
 const double ACCEL_RATE = 1.5;
 // Nunber of coins
-const int NUM_COINS = 1000;
+const int NUM_COINS = 5;
 
 // Mario's and coin's dimension
 #define MARIO_WIDTH		52

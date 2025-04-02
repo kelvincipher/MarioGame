@@ -17,20 +17,24 @@ void Game::initialize()
     window->setIcon(WINDOW_ICON_PATH);
 
 
-    //Initialize textures
+    // Initialize textures
+    // Background texture
     background = new Texture(window->getRenderer());
     background->loadFromFile(IMG_BACKGROUND);
 
+	// Ground texture
     ground = new Texture(window->getRenderer());
     ground->loadFromFile(IMG_GROUND);
 
+    // Score font and texture
     scoreFont = new Font(FONT_PATH, FONT_SCORE_SIZE);
     scoreFont->loadFromFile(FONT_PATH, FONT_SCORE_SIZE);
     scoreText = new Texture(window->getRenderer());
+    scoreText->loadFromRenderedText(convertIntToString(score), *scoreFont, { 255, 255, 255, 255 }); // White color
 	hiScoreText = new Texture(window->getRenderer());
-	scoreText->loadFromRenderedText(convertIntToString(score), *scoreFont, { 255, 255, 255, 255 }); // White color
 	hiScoreText->loadFromRenderedText(convertIntToString(hiScore), *scoreFont, { 255, 255, 0 }); // Yellow color
 
+    // Instruction font and texture
 	instructionFont = new Font(FONT_PATH, FONT_INSTRUCTION_SIZE);
 	instructionFont->loadFromFile(FONT_PATH, FONT_INSTRUCTION_SIZE);
 	instructionText = new Texture(window->getRenderer());
@@ -38,6 +42,7 @@ void Game::initialize()
         *instructionFont, { 255, 255, 255, 255 }); // White color
 
 
+    // Initialize keyboard and event
     this->keyboard = new Keyboard();
     this->event = new Event();
 
@@ -53,6 +58,7 @@ void Game::initialize()
 	bgTheme = new Music(MUSIC_THEME_PATH);
 	coinSound = new Sound(SOUND_COIN);
 	lostSound = new Sound(SOUND_LOST);
+    // Play the background theme
 	bgTheme->play();
 }
 
@@ -75,6 +81,7 @@ void Game::update()
 
     mario->move(keyboard);
 
+    // Check the collision using rectang
     static SDL_Rect marioRect;
     static SDL_Rect coinRect[NUM_COINS];
    
@@ -85,11 +92,13 @@ void Game::update()
         marioRect = mario->getRect();
         coinRect[i] = coins[i]->getRect();
 
-        /*std::cout << "Mario Rect: (" << marioRect.x << ", " << marioRect.y << ", " << marioRect.w << ", " << marioRect.h << ")"
+		/* Debugging: Uncomment the following line to see how the rectangles are updated
+        std::cout << "Mario Rect: (" << marioRect.x << ", " << marioRect.y << ", " << marioRect.w << ", " << marioRect.h << ")"
             << " Coin[" << i << "] Rect: (" << coinRect[i].x << ", " << coinRect[i].y << ", " << coinRect[i].w << ", " << coinRect[i].h << ")" << std::endl;*/
         if (mario->checkMarioCollision(coinRect[i]))
         {
-            //std::cout << "+1 coin" << std::endl;
+            /* Debugging: Unvcomment the following line to see if the collision works
+            std::cout << "+1 coin" << std::endl;*/
 			coinSound->play();
             // Reset the position of the if it collided with Mario
             score += 50;
@@ -102,7 +111,7 @@ void Game::update()
 	hiScoreText->loadFromRenderedText(convertIntToString(hiScore), *scoreFont, { 255, 255, 0 });
 
 	//if the player's health is 0, the game is over
-	if (mario->getHealth() == 0)
+	if (mario->getHealth() <= 0)
 	{
 		isGameOver = true;
 	}

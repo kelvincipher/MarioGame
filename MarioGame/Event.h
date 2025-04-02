@@ -1,8 +1,8 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-#define EVENT_OUT false
-#define EVENT_IN  true
+#define EVENT_IN	false		// Still in the game
+#define EVENT_OUT	true		// Out of the game
 
 
 #include <SDL.h>
@@ -12,7 +12,7 @@
 class Event
 {
 private:
-	bool event = 0;
+	bool event = EVENT_IN;
 	Keyboard* keyboard;
 
 public:

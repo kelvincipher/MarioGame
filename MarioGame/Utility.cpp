@@ -1,5 +1,6 @@
 #include "Utility.h"
 
+// Check collision between two rectangles
 bool checkCollision(const SDL_Rect& marioRect, const SDL_Rect& coinRect)
 {
 	// Sides of Rect
@@ -27,6 +28,7 @@ bool checkCollision(const SDL_Rect& marioRect, const SDL_Rect& coinRect)
 	return true;
 }
 
+// Convert integer to string (Used for rendering score)
 std::string convertIntToString(int num)
 {
 	std::string convertedString = "";
