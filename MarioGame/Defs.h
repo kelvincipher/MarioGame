@@ -61,7 +61,7 @@ const int HEALTH_DECREASE_AMOUNT = 2;   // Decrease health by 2
 // Coin physics constants
 const double ACCEL_RATE = 1.5;
 // Nunber of coins
-const int NUM_COINS = 5;
+const int NUM_COINS = 1000;
 
 // Mario's and coin's dimension
 #define MARIO_WIDTH		52
